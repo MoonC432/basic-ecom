@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import ResponseHandler from "../components/ResponseHandler";
 import Authentication from "../layouts/Authentication";
 import Accessible from "../layouts/Accessible";
-import GoogleLogin from "react-google-login";
+import GoogleBtn from "../components/GoogleBtn";
 
 function Register() {
   const dispatch = useDispatch();
@@ -120,7 +120,8 @@ function Register() {
               Submit
             </button>
           </form>
-          <GoogleLogin buttonText="Sign-In with Google" />
+          <GoogleBtn buttonText="Sign-In" />
+
           <ResponseHandler />
           <div className="register__links">
             <div className="register__link">

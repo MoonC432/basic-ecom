@@ -122,6 +122,9 @@
   white-space: nowrap;
   outline: none;
   flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .navbar .nav-profile span {
   border-left: 1px solid black;

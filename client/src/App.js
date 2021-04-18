@@ -19,11 +19,15 @@ function App() {
   // login user if token available
   const user = useSelector((state) => state.userAccountInfo.user);
   const dispatch = useDispatch();
-
+  console.log(user);
   useEffect(() => {
     if (!user) {
       axios
-        .get("/account/login/")
+        .get("/account/login/", {
+          headers: {
+            Authorization: `Token ${window.localStorage.getItem("Token")}`,
+          },
+        })
         .then((response) => {
           dispatch({
             type: "SET_USER_ACCOUNT_INFO",

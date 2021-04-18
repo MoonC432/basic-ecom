@@ -75,7 +75,11 @@ function Checkout() {
     );
 
     axios
-      .post("/order/place-order/", orderData)
+      .post("/order/place-order/", orderData, {
+        headers: {
+          Authorization: `Token ${window.localStorage.getItem("Token")}`,
+        },
+      })
       .then((response) => {
         if (response.status === 200) {
           history.push("/payment", {

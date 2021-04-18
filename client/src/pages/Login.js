@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import ResponseHandler from "../components/ResponseHandler";
 import Authentication from "../layouts/Authentication";
 import Accessible from "../layouts/Accessible";
-import GoogleLogin from "react-google-login";
+import GoogleBtn from "../components/GoogleBtn";
 
 function Login() {
   const [formData, setFormData] = useState();
@@ -70,6 +70,7 @@ function Login() {
               Submit
             </button>
           </form>
+          <GoogleBtn buttonText="Login" />
           <ResponseHandler />
 
           <div className="login__links">

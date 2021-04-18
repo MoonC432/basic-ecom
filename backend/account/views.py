@@ -19,8 +19,12 @@ from django.utils.encoding import smart_bytes
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.contrib.auth import logout
 
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from dj_rest_auth.registration.views import SocialLoginView
+from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 
 # Create your views here.
+
 
 class Register(generics.GenericAPIView):
 
@@ -109,7 +113,7 @@ class Login(ObtainAuthToken):
             }
             return Response(data, status=data['status'])
         except:
-            return Response({"error":"Could not login."},status=status.HTTP_401_UNAUTHORIZED)
+            return Response({"error": "Could not login."}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 class Logout(APIView):
@@ -221,5 +225,12 @@ class DeleteUser(generics.DestroyAPIView):
             print(user.email)
             user.delete()
             return Response({'response': "User account deleted successfully."}, status=status.HTTP_200_OK)
-        except Exception as e:
+        except Exception:
             return Response({'error': 'Internal server error.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class GoogleLogin(SocialLoginView):
+    authentication_classes = []  # disable authentication
+    adapter_class = GoogleOAuth2Adapter
+    callback_url = config('CLIENT_URL')
+    client_class = OAuth2Client

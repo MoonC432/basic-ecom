@@ -40,11 +40,22 @@ DEFAULT_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites'
 ]
 
 THIRDPARTY_APPS = [
     'corsheaders', 'django_rest_passwordreset',
     'rest_framework', 'rest_framework.authtoken',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    # 'rest_auth.registration',
+    # 'rest_auth',
+
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+
 
 ]
 
@@ -54,12 +65,39 @@ LOCAL_APPS = [
     'order.apps.OrderConfig',
     'payment.apps.PaymentConfig'
 ]
+
 INSTALLED_APPS = DEFAULT_APPS + THIRDPARTY_APPS + LOCAL_APPS
+
+SITE_ID = 2
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+
+        # 'APP': {
+        #     'client_id': '157713233538-hr1r3v9kqj4o30cr9kp6f7e05fmvlbnb.apps.googleusercontent.com',
+        #     'secret': 'v-xjHdsHZDddMq8Ml1IxkM56',
+        #     'key': ''
+        # },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_EMAIL_REQUIRED = False
+
+REST_USE_JWT = False
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'dj_rest_auth.utils.JWTCookieAuthentication',
+
     ],
     'DEFAULT_PERMISSIONS_CLASSES': [
         'rest_framework.permissions.IsAuthenticated'
@@ -69,6 +107,9 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,  # IMPORTANT
+    'BLACKLIST_AFTER_ROTATION': True,  # IMPORTANT
+    'UPDATE_LAST_LOGIN': True,
 }
 
 
@@ -83,6 +124,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+
 CORS_ORIGIN_WHITELIST = [
     config('CLIENT_URL')
 ]
@@ -96,6 +140,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -107,9 +152,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-AUTH_USER_MODEL = 'account.UserAccount'
+AUTH_USER_MODEL = 'user_account.UserAccount'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
+
 AUTHENTICATION_BACKENDS = (
     ('django.contrib.auth.backends.ModelBackend'),
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+
 )
 
 # Database

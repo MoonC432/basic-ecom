@@ -74,7 +74,11 @@ function ProductInfo() {
     event.preventDefault();
 
     axios
-      .post("/product/feedback/", feedbackForm)
+      .post("/product/feedback/", feedbackForm, {
+        headers: {
+          Authorization: `Token ${window.localStorage.getItem("Token")}`,
+        },
+      })
       .then((response) => {
         renderFeedback();
         dispatch({
@@ -97,7 +101,11 @@ function ProductInfo() {
     );
     if (confirm) {
       axios
-        .delete(`/product/feedback/${id}/`)
+        .delete(`/product/feedback/${id}/`, {
+          headers: {
+            Authorization: `Token ${window.localStorage.getItem("Token")}`,
+          },
+        })
         .then((response) => {
           dispatch({
             type: "SET_RESPONSE_MESSAGE",

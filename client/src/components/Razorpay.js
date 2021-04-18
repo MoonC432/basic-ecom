@@ -20,12 +20,20 @@ function Razorpay({ orderData, orderResponse, getTotal }) {
     order_id: orderResponse.response.generated_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     handler: function (response) {
       axios
-        .post("/payment/razorpay/verify/", {
-          order_id: orderResponse.response.order_id,
-          razorpay_payment_id: response.razorpay_payment_id,
-          razorpay_order_id: response.razorpay_order_id,
-          razorpay_signature: response.razorpay_signature,
-        })
+        .post(
+          "/payment/razorpay/verify/",
+          {
+            order_id: orderResponse.response.order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_signature: response.razorpay_signature,
+          },
+          {
+            headers: {
+              Authorization: `Token ${window.localStorage.getItem("Token")}`,
+            },
+          }
+        )
         .then((response) => {
           if (response.status === 200) {
             history.push("/orders");
