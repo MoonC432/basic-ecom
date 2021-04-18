@@ -1,0 +1,14 @@
+.login {
+  padding: 20px;
+}
+.login form {
+  width: 100%;
+  max-width: 450px;
+  margin: 20px 0;
+}
+.login__link {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  flex-wrap: wrap;
+}

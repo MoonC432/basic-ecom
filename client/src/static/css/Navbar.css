@@ -1,0 +1,246 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  min-height: 8vh;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #a7a7a7;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ecf8f8;
+  z-index: 100;
+}
+.nav-brand {
+  font-size: calc(1vw + 14px);
+  line-height: calc(2vw + 14px);
+  display: inline;
+  cursor: default;
+  white-space: nowrap;
+}
+.navbar .menu {
+  flex: 1;
+  margin: 0 10px;
+}
+.navbar .burger,
+.navbar .cart {
+  cursor: pointer;
+}
+.navbar .burger {
+  display: none;
+}
+
+.navbar .nav-elements {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar .nav-links .link {
+  display: inline;
+  padding: 0 5px;
+  text-decoration: none;
+  color: #707070;
+}
+.navbar .nav-links .active {
+  color: #bb6868;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #bb6868;
+}
+.navbar .nav-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+  border: 1px solid #b2967d;
+  position: relative;
+}
+.navbar .nav-search input {
+  color: #707070;
+  padding-left: 10px;
+  height: 6vh;
+  line-height: 6vh;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  flex: 1;
+  border: 2px solid #b2967d;
+}
+
+.navbar .nav-search button {
+  height: 6vh;
+  line-height: 6vh;
+  padding: 0 5px;
+  cursor: pointer;
+  flex: 0;
+  color: white;
+  background-color: #b2967d;
+  border: 0;
+  outline: none;
+}
+.nav-search_results {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background-color: white;
+  color: black;
+  border: 1px solid #b2967d;
+  border-top: 0;
+  padding: 0;
+}
+.nav-search_results li {
+  list-style-type: none;
+  text-align: center;
+  padding: 5px 0;
+}
+.nav-search_results .result:hover {
+  cursor: pointer;
+  background-color: #cccccc;
+}
+
+.navbar .nav-settings,
+.nav-login {
+  flex: 0.3;
+  position: relative;
+}
+.navbar .nav-profile {
+  display: flex;
+  align-items: center;
+  color: black;
+  background-color: #e7d8c9;
+}
+.navbar .nav-profile button {
+  background-color: #e7d8c9;
+  padding: 0 10px;
+  height: 6vh;
+  border: none;
+  color: black;
+  white-space: nowrap;
+  outline: none;
+  flex: 1;
+}
+.navbar .nav-profile span {
+  border-left: 1px solid black;
+  cursor: pointer;
+  flex: 0;
+}
+.navbar .settings-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #e7d8c9;
+  color: black;
+  width: 100%;
+  display: none;
+  z-index: 1;
+}
+
+.navbar .nav-settings ul,
+.settings-options li {
+  list-style: none;
+  padding: 10px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.navbar .nav-settings .settings-options :last-child:hover {
+  border: 1px solid rgb(116, 116, 116);
+}
+.settings-options li:hover {
+  background-color: #eee4e1;
+  color: #707070;
+}
+.navbar .nav-settings:hover > .settings-options {
+  display: block;
+}
+.nav-login {
+  text-align: center;
+  background-color: #e7d8c9;
+  color: black;
+  cursor: pointer;
+  padding: 0 10px;
+  height: 6vh;
+  line-height: 6vh;
+  text-decoration: underline;
+}
+.navbar .cart {
+  border-left: 1px solid black;
+  padding-left: 5px;
+  position: relative;
+}
+.navbar .cart .cart_length {
+  position: absolute;
+  bottom: 70%;
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 820px) {
+  .navbar .menu {
+    order: 0;
+    flex: 0;
+    margin: 0;
+  }
+  .navbar .nav-brand {
+    order: 1;
+  }
+  .navbar .cart {
+    order: 2;
+  }
+  .navbar .burger {
+    display: block;
+  }
+  .navbar .nav-elements {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: flex-start;
+    left: 0;
+    top: 100%;
+    height: 92vh;
+    width: 100%;
+    max-width: 425px;
+    background-color: #edeeed;
+    transition-property: all;
+    transition-duration: 0.5s;
+  }
+  .navbar .menu .close {
+    left: -999px;
+    transition-property: all;
+    transition-duration: 0.5s;
+  }
+  .navbar .nav-elements .nav-search {
+    order: 0;
+    margin: 0;
+    width: 100%;
+  }
+  .navbar .nav-elements .nav-links {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-around;
+    height: 100%;
+  }
+  .navbar .nav-elements .nav-settings,
+  .nav-login {
+    order: 2;
+    width: 100%;
+  }
+  .navbar .nav-profile span {
+    transform: rotate(180deg);
+    border: none;
+    border-right: 1px solid black;
+  }
+  .navbar .settings-options {
+    bottom: 50%;
+    top: auto;
+  }
+  .navbar .nav-settings:hover > .settings-options {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

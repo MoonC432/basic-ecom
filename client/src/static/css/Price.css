@@ -1,0 +1,17 @@
+.price {
+  font-size: calc(1vw + 14px);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px 0;
+}
+.prices span {
+  white-space: nowrap;
+}
+.price .line {
+  text-decoration: line-through;
+  margin-right: 20px;
+  color: #b4b4b4;
+}

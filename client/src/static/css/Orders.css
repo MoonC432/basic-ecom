@@ -1,0 +1,55 @@
+.orders {
+  display: flex;
+  flex-direction: column;
+}
+.orders h3 {
+  text-align: center;
+}
+.orders .search {
+  align-self: center;
+  margin: 10px 0;
+  width: 90%;
+  max-width: 300px;
+}
+.orders .search input {
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  padding: 10px;
+
+  border-radius: 100px;
+  border: 1px solid #a7a7a7;
+}
+.orders__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-transform: capitalize;
+}
+.orders__card {
+  padding: 10px;
+  margin: 10px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-flow: column;
+  border: 1px solid rgb(219, 219, 219);
+  background-color: rgb(241, 241, 241);
+}
+.orders__card .order-id {
+  text-align: center;
+  font-size: calc(14px + 1vw);
+}
+.orders__card .gid {
+  text-transform: none;
+}
+.orders__cards .data-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.orders__card .paid {
+  margin-right: 10px;
+}

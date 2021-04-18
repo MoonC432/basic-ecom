@@ -1,0 +1,145 @@
+.checkout h3 {
+  text-align: center;
+}
+.content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: #707070;
+}
+
+.checkout__list {
+  margin: 10px;
+  flex: 1;
+}
+.itemList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #fafafa;
+  border: 1px solid rgb(216, 216, 216);
+  margin: 10px 0;
+  padding: 10px;
+}
+.itemList .title p {
+  margin: 0;
+  font-size: 16px;
+}
+.itemList img {
+  width: 100%;
+  max-width: 150px;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.itemList .data {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.itemList .title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
+  margin: 10px;
+}
+
+.itemList .quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 1rem 0;
+  font-size: 16px;
+}
+.itemList .quantity button {
+  height: 25px;
+  min-width: 25px;
+  line-height: 25px;
+}
+.itemList .quantity input {
+  width: 50px;
+  height: 25px;
+  border: 1px solid black;
+  text-align: center;
+  padding: 0;
+  margin: 0 5px;
+  font-size: 16px;
+}
+.itemList .flex-column {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  width: 100%;
+}
+.itemList .subtotal,
+.itemList .price {
+  white-space: nowrap;
+  margin-right: 10px;
+  margin: 0;
+  justify-self: flex-start;
+  align-self: flex-start;
+  font-size: 16px;
+}
+.itemList .flex-column button {
+  justify-self: flex-end;
+  align-self: flex-end;
+  margin: 10px 0;
+  padding: 0 3px;
+  font-size: 13px;
+  color: #707070;
+  background-color: #efefef;
+  border: 1px solid #707070;
+}
+
+.checkout__details {
+  margin: 20px 10px;
+  padding: 10px;
+  background-color: #fafafa;
+  border: 1px solid rgb(216, 216, 216);
+  width: 100%;
+  max-width: 20rem;
+}
+.checkout__details h4 {
+  text-align: center;
+  padding-bottom: 20px;
+}
+.checkout__details p {
+  margin: 10px 0;
+}
+.details__form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.details__form .form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 10px 0;
+}
+.details__form .form-row label {
+  white-space: nowrap;
+  flex: 0;
+}
+
+.details__form .form-row input,
+.details__form .form-row select {
+  flex: 1;
+  margin-left: 10px;
+  border: 1px solid #a7a7a7;
+  width: 50px;
+  padding: 10px;
+}
+.details__form .form-row .submit {
+  white-space: nowrap;
+}

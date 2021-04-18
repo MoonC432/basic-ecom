@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 92vh;
+  width: 100%;
+}
+.title {
+  text-align: center;
+  font-size: calc(20px + 1vw);
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+.display {
+  flex: 0.5;
+  max-width: 425px;
+  height: 100%;
+  margin: 10px;
+}
+.display img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.description {
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid rgb(219, 219, 219);
+  background-color: rgb(241, 241, 241);
+}
+.rating .material-icons {
+  font-size: calc(2vw + 16px);
+  margin: 10px 0;
+}
+.rating__number {
+  font-size: 3rem;
+}
+
+.price {
+  font-size: calc(1vw + 16px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px 0;
+}
+.price span {
+  white-space: nowrap;
+}
+.price .line {
+  text-decoration: line-through;
+  margin-right: 20px;
+  color: #b4b4b4;
+}
+.productInfo .date_details {
+  margin: 10px;
+  padding: 10px;
+  align-self: flex-start;
+  border: 1px solid rgb(219, 219, 219);
+  background-color: rgb(241, 241, 241);
+}
+.productInfo .date_details span {
+  display: block;
+}
+
+.feedback {
+  width: 100%;
+  margin-top: 30px;
+}
+.feedback .close {
+  display: none;
+}
+.feedback_footer {
+  padding: 10px 0;
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  text-align: center;
+  background-color: rgb(180, 180, 180);
+  color: white;
+  border-radius: 50px 50px 0 0;
+}
+.feedback_footer:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: rgb(224, 224, 224);
+  background-color: #a1a1a1;
+}
+.feedback_content {
+  min-height: 92vh;
+  margin: 20px;
+}
+.feedback_header {
+  font-size: calc(15px + 1vw);
+  text-align: center;
+}
+.message_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  border-bottom: 1px solid #707070;
+  margin-bottom: 30px;
+}
+.message_form .flex-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.message_form textarea {
+  min-width: 0;
+  flex: 1;
+  min-height: 3rem;
+  border: 2px solid rgba(0, 110, 255, 0.473);
+  border-radius: 50px;
+  padding: 10px;
+}
+.message_form .feedback_rating {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap-reverse;
+  margin: 10px 0;
+}
+.feedback_rating .material-icons {
+  font-size: calc(1vw + 17px);
+  padding: 0 10px;
+}
+.feedback_rating label {
+  float: right;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.message_form .feedback_rating input {
+  display: none;
+}
+.feedback_rating input:not(:checked) ~ label:hover,
+.feedback_rating input:not(:checked) ~ label:hover ~ label {
+  color: #fd4;
+}
+.feedback_rating input:checked ~ label {
+  color: #fd4;
+}
+.feedback_rating input#star1:checked ~ label {
+  color: #fe7;
+  text-shadow: 0 0 20px #952;
+}
+
+.other_feedbacks {
+  width: 100%;
+}
+.other_feedbacks,
+.user_feedback_meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.user_feedback_meta .meta_row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.user_feedback {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border: 1px solid rgb(219, 219, 219);
+  width: 100%;
+}
+.other_feedbacks .highlight {
+  border: 1px solid rgb(219, 219, 219);
+  background-color: rgb(241, 241, 241);
+}
+.user_feedback_meta {
+  padding: 10px;
+  flex: 0;
+  white-space: nowrap;
+  min-width: 100%;
+  overflow-x: hidden;
+}
+.user_feedback_message {
+  align-self: flex-start;
+  justify-self: flex-start;
+  padding: 10px;
+  margin: 0;
+  flex: 1;
+}
+.user_feedback_delete {
+  align-self: center;
+  color: red;
+  cursor: pointer;
+  padding: 0 10px;
+}
+.user_feedback_meta .material-icons {
+  font-size: calc(1vw + 14px);
+  display: flex;
+}
+
+.message_form .submit_button {
+  width: 70%;
+  max-width: 325px;
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 540px) {
+  .description,
+  .display {
+    flex: auto;
+  }
+}
