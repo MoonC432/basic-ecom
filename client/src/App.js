@@ -19,7 +19,6 @@ function App() {
   // login user if token available
   const user = useSelector((state) => state.userAccountInfo.user);
   const dispatch = useDispatch();
-  console.log(user);
   useEffect(() => {
     if (!user) {
       axios

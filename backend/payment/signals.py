@@ -3,8 +3,7 @@ from django.dispatch import receiver
 from order.models import Order
 import razorpay
 from decouple import config
-from rest_framework.response import Response
-from rest_framework import status
+
 
 client = razorpay.Client(
     auth=(config("RAZORPAY_KEY_ID"), config("RAZORPAY_SECRET_ID")))

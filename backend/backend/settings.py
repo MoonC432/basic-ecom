@@ -72,12 +72,6 @@ SITE_ID = 2
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-
-        # 'APP': {
-        #     'client_id': '157713233538-hr1r3v9kqj4o30cr9kp6f7e05fmvlbnb.apps.googleusercontent.com',
-        #     'secret': 'v-xjHdsHZDddMq8Ml1IxkM56',
-        #     'key': ''
-        # },
         'SCOPE': [
             'profile',
             'email',
