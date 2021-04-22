@@ -145,7 +145,7 @@
 .navbar .nav-settings ul,
 .settings-options li {
   list-style: none;
-  padding: 10px 0;
+  padding: 10px 0px;
   text-align: center;
   cursor: pointer;
 }

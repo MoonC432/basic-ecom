@@ -24,17 +24,32 @@ class ProductDetails(generics.GenericAPIView):
 
         return Response(serializer.data)
 
+
+class SelectProducts(generics.GenericAPIView):
+    serializer_class = ProductDetailSerializer
+
+    def get(self, request, *args, **kwargs):
+        if kwargs['tag'] == 'latest':
+            tag = '-date_of_entry'
+        elif kwargs['tag'] == 'featured':
+            tag = '-rating'
+        count = kwargs['count']
+        query_string = Product.objects.order_by(tag)[:count]
+        serializer = self.serializer_class(query_string, many=True)
+        return Response({"response": serializer.data}, status=status.HTTP_200_OK)
+
+
 class SearchResults(generics.GenericAPIView):
     serializer_class = ProductDetailSerializer
 
     def get(self, request, *args, **kwargs):
         search_term = kwargs['searchTerm']
-        querystring = Product.objects.filter(
-            Q(name__icontains = str(search_term)) | Q(category__icontains = str(search_term)) | Q(model_number__icontains = str(search_term))
+        query_string = Product.objects.filter(
+            Q(name__icontains=str(search_term)) | Q(category__icontains=str(
+                search_term)) | Q(model_number__icontains=str(search_term))
         )
-        serializer = self.serializer_class(querystring, many=True)
-        return Response({"response":serializer.data},status=status.HTTP_200_OK)
-        
+        serializer = self.serializer_class(query_string, many=True)
+        return Response({"response": serializer.data}, status=status.HTTP_200_OK)
 
 
 class FeedbackView(generics.GenericAPIView):
@@ -42,11 +57,11 @@ class FeedbackView(generics.GenericAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
-    def get(self,request, *args , **kwargs):
+    def get(self, request, *args, **kwargs):
         feedbacks = Feedback.objects.filter(product=kwargs['pid'])
-        serializer = FeedbacksFetchSerializer(feedbacks,many=True)
-        
-        return Response({'response':serializer.data},status=status.HTTP_200_OK)
+        serializer = FeedbacksFetchSerializer(feedbacks, many=True)
+
+        return Response({'response': serializer.data}, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
 

@@ -24,6 +24,7 @@ body {
   background-color: rgb(152, 210, 243);
   color: white;
   cursor: pointer;
+  transform: scale(0.9);
 }
 .secondary_btn {
   padding: 0 3px;

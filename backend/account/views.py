@@ -229,6 +229,23 @@ class DeleteUser(generics.DestroyAPIView):
             return Response({'error': 'Internal server error.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+class SubscriptionView(generics.GenericAPIView):
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
+
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        user.subscribed = True
+        user.save()
+        return Response({"response": "Subscribed"}, status=status.HTTP_200_OK)
+
+    def delete(self, request, *args, **kwargs):
+        user = request.user
+        user.subscribed = False
+        user.save()
+        return Response({"response": "Unsubscribed"}, status=status.HTTP_200_OK)
+
+
 class GoogleLogin(SocialLoginView):
     authentication_classes = []  # disable authentication
     adapter_class = GoogleOAuth2Adapter

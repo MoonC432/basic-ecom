@@ -50,9 +50,6 @@ THIRDPARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    # 'rest_auth.registration',
-    # 'rest_auth',
-
     'dj_rest_auth',
     'dj_rest_auth.registration',
 
@@ -82,15 +79,15 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
-SOCIALACCOUNT_EMAIL_REQUIRED = False
+SOCIALACCOUNT_EMAIL_REQUIRED = True
 
 REST_USE_JWT = False
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'dj_rest_auth.utils.JWTCookieAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'dj_rest_auth.utils.JWTCookieAuthentication',
 
     ],
     'DEFAULT_PERMISSIONS_CLASSES': [
@@ -98,13 +95,13 @@ REST_FRAMEWORK = {
     ]
 }
 
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=60),
-    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': True,  # IMPORTANT
-    'BLACKLIST_AFTER_ROTATION': True,  # IMPORTANT
-    'UPDATE_LAST_LOGIN': True,
-}
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=60),
+#     'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
+#     'ROTATE_REFRESH_TOKENS': True,  # IMPORTANT
+#     'BLACKLIST_AFTER_ROTATION': True,  # IMPORTANT
+#     'UPDATE_LAST_LOGIN': True,
+# }
 
 
 MIDDLEWARE = [

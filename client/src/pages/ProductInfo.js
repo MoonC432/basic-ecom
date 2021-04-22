@@ -8,7 +8,6 @@ import StarHalfIcon from "@material-ui/icons/StarHalf";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { useDispatch, useSelector } from "react-redux";
 import ResponseHandler from "../components/ResponseHandler";
-import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import Price from "../components/Price";
 import ProductActions from "../components/ProductActions";
 
@@ -146,7 +145,8 @@ function ProductInfo() {
               </p>
 
               <span className="material-icons">
-                {productInfo.rating && getRating(productInfo.rating, 10)}
+                {productInfo.rating != null &&
+                  getRating(productInfo.rating, 10)}
               </span>
             </div>
             <p className="detail">{productInfo.description}</p>

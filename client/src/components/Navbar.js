@@ -123,8 +123,8 @@ function Navbar() {
             <div className="nav-settings">
               <div className="nav-profile">
                 <button>
-                  {/* {user.first_name} {user.last_name} */}
-                  {user.email}
+                  {user.first_name} {user.last_name}
+                  {/* {user.email} */}
                 </button>
                 <span className="material-icons">
                   {" "}

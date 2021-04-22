@@ -38,7 +38,7 @@ class UserAccount(AbstractBaseUser):
     last_name = models.CharField(max_length=20, null=False, blank=False)
     email = models.EmailField(verbose_name='email address',
                               unique=True, max_length=255, null=False, blank=False)
-
+    subscribed = models.BooleanField(null=True, blank=True, default=False)
     is_active = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
 

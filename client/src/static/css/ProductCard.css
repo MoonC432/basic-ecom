@@ -1,20 +1,24 @@
 .productCard {
   width: 100%;
   max-width: 19rem;
+  height: 100%;
   border: 1px solid rgb(219, 219, 219);
   background-color: rgb(241, 241, 241);
   padding: 10px;
   margin: 10px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 .productCard__title {
   font-size: calc(1vw + 12px);
   text-align: center;
 }
+
 .productCard img {
   width: 100%;
-  height: 100%;
+  height: 30vh;
+  /* min-height: 13rem; */
   object-fit: contain;
   mix-blend-mode: multiply;
 }
@@ -23,7 +27,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 0;
+  margin: 10px 0;
 }
 .productCard .link-detail {
   cursor: pointer;

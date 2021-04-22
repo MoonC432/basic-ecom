@@ -7,8 +7,9 @@
   justify-content: flex-start;
   margin: 10px 0;
 }
-.prices span {
+.price span {
   white-space: nowrap;
+  font-size: calc(1vw + 14px);
 }
 .price .line {
   text-decoration: line-through;

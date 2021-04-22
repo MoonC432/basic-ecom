@@ -11,7 +11,7 @@ function ProductCard({ productInfo }) {
   };
   return (
     <div className="productCard">
-      <h5 className="productCard__title">
+      <h5 className="productCard__title ">
         {productInfo.name}{" "}
         {productInfo.model_number && productInfo.model_number}
       </h5>
