@@ -67,7 +67,7 @@ function Razorpay({ orderData, orderResponse, getTotal }) {
   });
 
   return (
-    <div className="razorpay primary_btn">
+    <div className="razorpay">
       <button
         onClick={() => {
           rzp1.open();

@@ -1,0 +1,36 @@
+.subscription {
+  width: 100%;
+  max-width: 50rem;
+  border-radius: 20px;
+  background-color: #303030;
+  color: #fff;
+  padding: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+.subscription .header {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.subscription .header span {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+.subscription h4 {
+  margin: 20px 0;
+  color: #7373da;
+}
+.subscription .buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 20px 0;
+}

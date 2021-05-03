@@ -16,6 +16,7 @@ function ProductCard({ productInfo }) {
         {productInfo.model_number && productInfo.model_number}
       </h5>
       <img
+        draggable={false}
         src={process.env.REACT_APP_SERVER_API + productInfo.picture}
         alt=""
       />

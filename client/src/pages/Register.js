@@ -120,7 +120,7 @@ function Register() {
               Submit
             </button>
           </form>
-          <GoogleBtn buttonText="Sign-In" />
+          <GoogleBtn buttonText="Sign-In with Google" />
 
           <ResponseHandler />
           <div className="register__links">

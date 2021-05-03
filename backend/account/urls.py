@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ChangePasswordView, DeleteUser, EmailVerification, GoogleLogin, Login, Logout, Register, RequestPasswordResetEmail, SendEmailVerification, SetNewPasswordAPIView, SubscriptionView
+from .views import ChangePasswordView, DeleteUser, EmailMessage, EmailVerification, GoogleLogin, Login, Logout, Register, RequestPasswordResetEmail, SendEmailVerification, SetNewPasswordAPIView, SubscriptionView
 
 urlpatterns = [
     path('register/', Register.as_view(), name='register'),
@@ -16,7 +16,8 @@ urlpatterns = [
     path('password-reset-complete/', SetNewPasswordAPIView.as_view(),
          name='password-reset-complete'),
     path('delete/', DeleteUser.as_view(), name="deleteUser"),
-    path('subsription/', SubscriptionView.as_view(), name="subscribe"),
+    path('subscription/', SubscriptionView.as_view(), name="subscribe"),
+    path('email-message/', EmailMessage.as_view(), name="email_message"),
 
 
     #     Social Auths

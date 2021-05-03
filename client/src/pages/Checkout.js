@@ -203,7 +203,7 @@ function Checkout() {
                     <CurrencyFormat
                       value={getTotal()}
                       thousandSeparator={true}
-                      prefix="- Rs. "
+                      prefix="Rs. "
                       displayType="text"
                     />
                   </span>
@@ -211,7 +211,6 @@ function Checkout() {
               </div>
               <form onSubmit={handleCheckout} className="details__form">
                 <div className="form-row">
-                  <label htmlFor="address">Address</label>
                   <input
                     onChange={handleOrderData}
                     id="address"
@@ -220,7 +219,6 @@ function Checkout() {
                   />
                 </div>
                 <div className="form-row">
-                  <label htmlFor="phone">Phone</label>
                   <input
                     onChange={handleOrderData}
                     id="phone"
@@ -229,7 +227,6 @@ function Checkout() {
                   />
                 </div>
                 <div className="form-row">
-                  <label htmlFor="payment_method_">Payment Method</label>
                   <select
                     defaultValue="default"
                     onChange={handleOrderData}

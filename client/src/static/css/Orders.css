@@ -50,6 +50,11 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
 .orders__card .paid {
   margin-right: 10px;
+}
+
+.orders__card .completed {
+  margin-left: 10px;
 }

@@ -30,6 +30,10 @@ function Login() {
         });
         window.localStorage.setItem("Token", response.data.token);
         history.push("/");
+        dispatch({
+          type: "SET_SUBSCRIBE",
+          open: true,
+        });
       })
       .catch((error) => {
         dispatch({ type: "SET_RESPONSE_MESSAGE", message: error.response });
@@ -70,7 +74,7 @@ function Login() {
               Submit
             </button>
           </form>
-          <GoogleBtn buttonText="Login" />
+          <GoogleBtn buttonText="Login with Google" />
           <ResponseHandler />
 
           <div className="login__links">

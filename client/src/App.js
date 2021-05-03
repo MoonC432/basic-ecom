@@ -14,6 +14,7 @@ import axios from "./axios";
 import SearchResults from "./pages/SearchResults";
 import Payment from "./pages/Payment";
 import Orders from "./pages/Orders";
+import Subscription from "./components/Subscription";
 
 function App() {
   // login user if token available
@@ -63,6 +64,7 @@ function App() {
           <Route exact path="/" component={Home} />
         </Switch>
         <LoadingScreen />
+        <Subscription />
       </BrowserRouter>
     </div>
   );

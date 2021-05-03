@@ -9,8 +9,8 @@
   margin-bottom: 10px;
   border-bottom: 1px solid #a7a7a7;
   display: flex;
-  flex-wrap: nowrap;
   justify-content: space-between;
+  flex-wrap: nowrap;
   align-items: center;
   background-color: #ecf8f8;
   z-index: 100;
@@ -32,13 +32,24 @@
 }
 .navbar .burger {
   display: none;
+  border-radius: 50%;
+  padding: 5px;
+  transition: all 0.2s;
 }
-
+.navbar .burger:active {
+  background-color: #d0dddd;
+}
 .navbar .nav-elements {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.navbar .nav-links {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 .navbar .nav-links .link {
   display: inline;
@@ -51,6 +62,15 @@
   padding-bottom: 4px;
   border-bottom: 1px solid #bb6868;
 }
+
+.navbar .category select {
+  background-color: transparent;
+  color: #707070;
+  width: 100%;
+  height: 6vh;
+  text-align-last: center;
+}
+
 .navbar .nav-search {
   flex: 1;
   display: flex;
@@ -68,7 +88,7 @@
   border: none;
   outline: none;
   flex: 1;
-  border: 2px solid #b2967d;
+  border: 3px solid #b2967d;
 }
 
 .navbar .nav-search button {
@@ -220,17 +240,31 @@
     margin: 0;
     width: 100%;
   }
+
   .navbar .nav-elements .nav-links {
-    order: 1;
+    flex: auto;
+    order: 2;
     display: flex;
     flex-direction: column;
     align-self: center;
     justify-content: space-around;
     height: 100%;
   }
+  .navbar .category {
+    width: 100%;
+    order: 1;
+    margin-top: 20px;
+  }
+  .navbar .category select {
+    font-size: 20px;
+    height: 50px;
+    border: none;
+    border-bottom: 2px solid #a7a7a7;
+  }
+
   .navbar .nav-elements .nav-settings,
   .nav-login {
-    order: 2;
+    order: 3;
     width: 100%;
   }
   .navbar .nav-profile span {

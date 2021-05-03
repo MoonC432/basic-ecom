@@ -8,6 +8,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "../axios";
+import { NavHashLink } from "react-router-hash-link";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -44,6 +45,15 @@ function Navbar() {
     setSearchTerm("");
   };
 
+  const handleCategoryChange = (event) => {
+    axios.get(`/product/search/${event.target.value}/`).then((response) => {
+      dispatch({
+        type: "SET_SEARCH_RESULTS",
+        payload: response.data.response,
+      });
+      history.push("/product/search-results");
+    });
+  };
   useEffect(() => {
     if (searchTerm.trim().length === 0) {
       setSearchResults([]);
@@ -55,7 +65,12 @@ function Navbar() {
   }, [searchTerm]);
   return (
     <nav className="navbar">
-      <div className="nav-brand">
+      <div
+        onClick={() => {
+          history.push("/");
+        }}
+        className="nav-brand"
+      >
         <span>Brand Name</span>
       </div>
       <div className="menu">
@@ -71,18 +86,34 @@ function Navbar() {
 
         <div className={sidebar ? "nav-elements" : "nav-elements close"}>
           <div className="nav-links">
-            <Link className="link active" to="/">
+            <NavHashLink smooth className="link" to="/#top">
               Home
-            </Link>
-            <Link className="link" to="/">
+            </NavHashLink>
+            <NavHashLink smooth className="link" to="/#latest">
               Latest
-            </Link>
-            <Link className="link" to="/">
-              About
-            </Link>
-            <Link className="link" to="/">
-              Contact
-            </Link>
+            </NavHashLink>
+
+            <NavHashLink smooth className="link" to="/services">
+              Services
+            </NavHashLink>
+          </div>
+          <div className="category">
+            <select
+              onChange={(event) => {
+                handleCategoryChange(event);
+              }}
+              defaultValue="default"
+            >
+              <option disabled value="default">
+                Category
+              </option>
+              <option value="laptop">Laptop</option>
+              <option value="desktop">Desktop</option>
+              <option value="monitor">Monitor</option>
+              <option value="printer">Printer</option>
+              <option value="network">Network</option>
+              <option value="other">Other</option>
+            </select>
           </div>
           <form
             onSubmit={handleSearchSubmit}

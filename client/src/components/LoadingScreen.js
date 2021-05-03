@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import "../static/css/LoadingScreen.css";
 
 function LoadingScreen() {
-  const loading = useSelector((state) => state.loadingScreen.loading);
+  const loading = useSelector((state) => state.portalState.loading);
   if (!loading) return null;
   return ReactDom.createPortal(
     <>

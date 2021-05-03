@@ -88,6 +88,7 @@ class Login(ObtainAuthToken):
             data['status'] = status.HTTP_200_OK
             data['response'] = 'Successfully logged In.'
             data['payload'] = {
+                'subscribed': user.subscribed,
                 'email': user.email,
                 'first_name': user.first_name,
                 'last_name': user.last_name,
@@ -106,6 +107,7 @@ class Login(ObtainAuthToken):
             data['status'] = status.HTTP_200_OK
             data['response'] = 'Successfully logged In.'
             data['payload'] = {
+                'subscribed': user.subscribed,
                 'email': user.email,
                 'first_name': user.first_name,
                 'last_name': user.last_name,
@@ -251,3 +253,20 @@ class GoogleLogin(SocialLoginView):
     adapter_class = GoogleOAuth2Adapter
     callback_url = config('CLIENT_URL')
     client_class = OAuth2Client
+
+
+class EmailMessage(APIView):
+    def post(self, request, *args, **kwargs):
+        email = request.data.get("email")
+        message = request.data.get("message")
+        admins = UserAccount.objects.values_list("email", flat=True).filter(
+            is_admin=True)
+
+        email_data = {
+
+            'email_body': f"from : {email} \nmessage : {message}",
+            'to_email': ", ".join(admins),
+            'email_subject': 'Reaching out.'
+        }
+        Util.send_email(email_data)
+        return Response({"response": "Message sent. Response will be directed to your email."}, status=status.HTTP_200_OK)

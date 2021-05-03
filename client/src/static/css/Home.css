@@ -1,0 +1,299 @@
+.home .banner,
+.home .landingPage {
+  position: relative;
+  width: 100%;
+}
+.home .banner img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 1)
+  );
+  z-index: -1;
+}
+.home .banner .banner__title {
+  position: absolute;
+  top: 5%;
+  word-wrap: break-word;
+  left: 5%;
+  text-shadow: 0 1px 0 #3b3b3b;
+  font-size: calc(1vw + 10px);
+  mix-blend-mode: difference;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.home .landingPage .ownerImg {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 20vh;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.home .landingPage .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 55%;
+  left: 5%;
+  z-index: 1;
+}
+
+.home .landingPage .buttons .about {
+  padding: 5px 10px;
+  border-radius: 50px;
+  transition: all 0.2s;
+  border: 2px solid #7373f5;
+  background-color: white;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #3b3b3b;
+}
+.home .landingPage .buttons .about:hover {
+  transform: scale(0.9);
+}
+
+.home .about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  padding: 20px;
+  margin: 10px 0;
+}
+.home .about .ownerInfo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+.home .about .ownerImg {
+  width: 100%;
+  max-width: 250px;
+  object-fit: contain;
+}
+.home .about .ownerDescription {
+  flex: 1;
+  padding: 10px;
+  font-size: large;
+}
+.home .about .businessInfo {
+  display: block;
+  width: 100%;
+}
+.home .about .businessInfo .businessDescription .header {
+  padding: 10px;
+  background-color: #e7d8c9;
+  border-radius: 10px;
+  text-align: center;
+  color: #3b3b3b;
+  font-size: calc(14px + 1vw);
+  margin: 20px 0;
+}
+.home .about .businessInfo .businessDescription .header span {
+  font-size: calc(16px + 1vw);
+  font-weight: 600;
+}
+
+.home .about .businessDescription .content {
+  display: block;
+  margin: 10px 0;
+}
+.home .about .businessDescription .content .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+.home .about .businessDescription .content img {
+  width: 10rem;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.home .about .businessDescription .content span {
+  flex: 1;
+  min-width: 100px;
+  font-size: calc(1vw + 10px);
+}
+.home .about .googleMap {
+  width: 100%;
+  height: 450px;
+  border: 3px solid #a7a7a7;
+}
+.home .about .metaInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.home .about .metaInfo .locationInfo span {
+  font-size: calc(1vw + 10px);
+}
+.home .about .metaInfo .companyLogo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-left: 10px;
+  flex: 1;
+}
+.home .about .metaInfo .companyLogo img {
+  width: 10vw;
+  min-width: 4rem;
+  object-fit: contain;
+  margin: 0 5px;
+  user-select: none;
+}
+.home .contact {
+  width: 100%;
+  padding: 20px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+.home .contactForm {
+  padding: 20px 30px;
+  width: 100%;
+  max-width: 40rem;
+  margin: 20px 0;
+  justify-self: center;
+  align-self: center;
+  background-color: #3b3b3b;
+  color: #e7d8c9;
+}
+.home .contactForm h4 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.home .contactFormBtn {
+  justify-self: center;
+  align-self: center;
+  margin: 10px 0;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.home .contactForm form .row {
+  margin: 20px 0;
+}
+.home .contactForm form .row label {
+  padding: 0;
+}
+.home .contactDetails {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.home .contactDetails .subscribeBtn {
+  width: 100%;
+  max-width: 30rem;
+  padding: 5px;
+  min-height: 5rem;
+  font-size: calc(1vw + 16px);
+  border: 5px solid #edeeed;
+  color: #fff;
+  background-color: #3b3b3b;
+  border-radius: 50px;
+  transition: all 0.2s;
+}
+.home .contactDetails .subscribeBtn:hover {
+  transform: scale(0.9);
+  color: #edeeed;
+}
+
+.home .contactDetails .followLinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  border: 2px solid #707070;
+  padding: 10px;
+  margin: 20px 0;
+}
+.home .contactDetails .followLinks img {
+  width: 3rem;
+  object-fit: contain;
+  border-radius: 50%;
+  padding: 0 5px;
+  opacity: 0.7;
+  transition: all 0.2s;
+}
+.home .contactDetails .followLinks img:hover {
+  transform: scale(1.2);
+  opacity: 1;
+}
+.home .navigationalLinks {
+  background-color: #3b3b3b;
+  padding: 10px;
+}
+.home .navigationalLinks h3 {
+  color: #c5c5c5;
+  padding-bottom: 10px;
+}
+.home .navigationalLinks .section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px;
+  background-color: #ffffff;
+  padding: 10px;
+}
+.home .navigationalLinks .section .navLink {
+  text-decoration: none;
+  padding: 10px;
+  color: #a7a7a7;
+  transition: all 0.2s;
+}
+.home .navigationalLinks .section .navLink:hover {
+  text-decoration: underline;
+  color: #3b3b3b;
+}
+.home .copyrightFooter {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px;
+  padding: 10px;
+  background-color: #3b3b3b;
+}
+
+@media screen and (max-width: 765px) {
+  .home .about .ownerDescription {
+    flex: auto;
+  }
+  .home .about .metaInfo .companyLogo {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    margin: 10px 0;
+    width: 100%;
+    flex: auto;
+  }
+
+  .home .about .metaInfo .companyLogo::-webkit-scrollbar {
+    height: 5px;
+  }
+  .home .about .metaInfo .companyLogo::-webkit-scrollbar-track {
+    background: #fff;
+  }
+
+  .home .about .metaInfo .companyLogo::-webkit-scrollbar-thumb {
+    background: #707070;
+  }
+
+  .home .about .metaInfo .companyLogo::-webkit-scrollbar-thumb:hover {
+    background: #a7a7a7;
+  }
+}

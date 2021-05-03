@@ -6,6 +6,7 @@ from product.models import Product
 
 
 class Order(models.Model):
+
     user = models.ForeignKey(
         UserAccount, on_delete=models.SET_NULL, null=True, blank=False)
     address = models.CharField(max_length=500, null=False, blank=False)

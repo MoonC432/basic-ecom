@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  scroll-margin-top: 8vh;
 }
 *:focus {
   outline: 0 !important;
@@ -9,10 +10,11 @@ html,
 body {
   height: 100%;
   color: #707070;
+  overflow-x: hidden;
 }
 
 .primary_btn {
-  padding: 5px;
+  padding: 5px 10px;
   border: 2px solid rgb(115, 115, 218);
   background-color: rgb(115, 115, 218);
   border-radius: 50px;
@@ -38,8 +40,8 @@ body {
   cursor: pointer;
 }
 
-@media screen and (max-width: 230px) {
+/* @media screen and (max-width: 230px) {
   html {
     zoom: 75%;
   }
-}
+} */

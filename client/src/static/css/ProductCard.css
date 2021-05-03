@@ -11,14 +11,14 @@
   overflow: hidden;
 }
 .productCard__title {
-  font-size: calc(1vw + 12px);
+  font-size: calc(0.7vw + 12px);
   text-align: center;
 }
 
 .productCard img {
   width: 100%;
   height: 30vh;
-  /* min-height: 13rem; */
+  user-select: none;
   object-fit: contain;
   mix-blend-mode: multiply;
 }

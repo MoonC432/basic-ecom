@@ -99,7 +99,7 @@ function Orders() {
                   </span>
                 </div>
                 <div className="data-row">
-                  <span className="paid">Paid: {String(order.paid)}</span>
+                  <span className="paid">Paid: {String(order.paid)}</span>|
                   <span className="completed">
                     Completed: {String(order.completed)}
                   </span>

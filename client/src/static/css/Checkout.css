@@ -135,7 +135,6 @@
 .details__form .form-row input,
 .details__form .form-row select {
   flex: 1;
-  margin-left: 10px;
   border: 1px solid #a7a7a7;
   width: 50px;
   padding: 10px;
