@@ -10,7 +10,7 @@ import ResponseHandler from "../components/ResponseHandler";
 import { useHistory } from "react-router";
 
 function Checkout() {
-  const [orderData, setOrderData] = useState({});
+  const [orderData, setOrderData] = useState({ payment_method: "custom" });
   const orderList = useSelector((state) => state.cartItems.products);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -226,7 +226,7 @@ function Checkout() {
                     type="text"
                   />
                 </div>
-                <div className="form-row">
+                {/* <div className="form-row">
                   <select
                     defaultValue="default"
                     onChange={handleOrderData}
@@ -237,7 +237,7 @@ function Checkout() {
                     <option value="paypal">Paypal</option>
                     <option value="razorpay">Razorpay</option>
                   </select>
-                </div>
+                </div> */}
                 <button type="submit" className="submit primary_btn">
                   Proceed to payment
                 </button>

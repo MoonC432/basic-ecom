@@ -6,11 +6,15 @@ from .models import Order, ProductOrderList
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'total_amt', 'completed', 'paid',
                     'date_of_entry', 'date_of_delivery')
+    search_fields = ('id', 'user__email')
+    sortable_by = ('-id', 'paid',)
 
 
 class ProductOrderListAdmin(admin.ModelAdmin):
     list_display = ('order_id', 'user',  'product',
                     'quantity', 'price', 'total_amount', 'completed', 'paid')
+
+    search_fields = ('order_details__id',)
 
     def completed(self, obj):
         return obj.order_details.completed

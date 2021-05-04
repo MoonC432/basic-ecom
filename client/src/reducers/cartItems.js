@@ -28,10 +28,10 @@ export default function _(state = initialState, action) {
                 ...product,
                 quantity:
                   action.quantity && action.quantity >= 1
-                    ? action.quantity < action.product.stock
+                    ? action.quantity <= action.product.stock
                       ? parseInt(action.quantity)
                       : parseInt(action.product.stock)
-                    : 1,
+                    : 0,
               }
             : product
         ),
@@ -60,7 +60,7 @@ export default function _(state = initialState, action) {
           product.id === action.product.id
             ? {
                 ...product,
-                quantity: 1 < product.quantity ? product.quantity - 1 : 1,
+                quantity: 1 < product.quantity ? product.quantity - 1 : 0,
               }
             : product
         ),

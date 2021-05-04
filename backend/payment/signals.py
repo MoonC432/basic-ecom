@@ -4,7 +4,6 @@ from order.models import Order
 import razorpay
 from decouple import config
 
-
 client = razorpay.Client(
     auth=(config("RAZORPAY_KEY_ID"), config("RAZORPAY_SECRET_ID")))
 

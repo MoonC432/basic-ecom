@@ -3,9 +3,12 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import "../static/css/ProductActions.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRef } from "react";
 
 function ProductActions({ product }) {
-  const [quantity, setQuantity] = useState(1);
+  var cartButton = useRef(null);
+
+  const [quantity, setQuantity] = useState(product.stock > 1 ? 1 : 0);
   const dispatch = useDispatch();
 
   const cartProductModel = {
@@ -40,8 +43,8 @@ function ProductActions({ product }) {
     const value = parseInt(event.target.value);
     if (value > product.stock) {
       setQuantity(product.stock);
-    } else if (value < 1) {
-      setQuantity(1);
+    } else if (value < 0) {
+      setQuantity(0);
     } else {
       setQuantity(value);
     }
@@ -69,7 +72,7 @@ function ProductActions({ product }) {
       <div className="actions">
         <div className="quantity">
           <button
-            disabled={quantity === 1}
+            disabled={quantity <= 0}
             onClick={decrementQuantity}
             className="minus"
           >
@@ -84,8 +87,14 @@ function ProductActions({ product }) {
             +
           </button>
         </div>
-        <div className="cart">
-          <button onClick={addToCart}>Add To Cart</button>
+        <div className={cartButton.current?.disabled ? "disabledCart" : "cart"}>
+          <button
+            ref={cartButton}
+            disabled={quantity === 0}
+            onClick={addToCart}
+          >
+            Add To Cart
+          </button>
           <span className="material-icons">
             {" "}
             <AddShoppingCartIcon />{" "}

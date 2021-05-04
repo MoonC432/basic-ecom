@@ -7,12 +7,19 @@ from product.models import Product
 
 class Order(models.Model):
 
+    PAYMENT_CHOICES = (
+        ('paypal', 'Paypal'),
+        ('razorpay', 'Razorpay'),
+        ('custom', 'Custom')
+    )
+
     user = models.ForeignKey(
         UserAccount, on_delete=models.SET_NULL, null=True, blank=False)
     address = models.CharField(max_length=500, null=False, blank=False)
     phone = models.CharField(max_length=15, null=False, blank=False)
     total_amt = models.FloatField(null=False, blank=False)
-    payment_method = models.CharField(max_length=15, null=False, blank=False)
+    payment_method = models.CharField(
+        max_length=15, null=False, blank=False, choices=PAYMENT_CHOICES)
     generated_id = models.CharField(max_length=255, null=True, blank=True)
     paid = models.BooleanField(default=False, null=False, blank=False)
     completed = models.BooleanField(default=False, null=False, blank=False)
@@ -21,7 +28,7 @@ class Order(models.Model):
     date_of_delivery = models.DateField(null=True)
 
     class Meta:
-        ordering = ['-date_of_entry', '-paid']
+        ordering = ['-date_of_entry', '-id']
 
     def __str__(self) -> str:
         return f"{str(self.id)} -> {self.user} -> Rs.{self.total_amt}"

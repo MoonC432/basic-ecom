@@ -17,11 +17,8 @@ import razorpay
 
 # Create your views here.
 
-def after_payment_verified(saved_order_instance):
+def reduce_from_stock(saved_order_instance):
     try:
-        # change paid stauts here
-        saved_order_instance.paid = True
-        saved_order_instance.save()
 
         # reduce products from stock
 
@@ -94,5 +91,8 @@ class RazorpayVerification(generics.GenericAPIView):
         if verified:
             return Response({"error": "Invalid Payment Signature. Verification Failed"}, status=status.HTTP_402_PAYMENT_REQUIRED)
 
-        if after_payment_verified(saved_order_instance):
+        # change paid stauts here
+        saved_order_instance.paid = True
+        saved_order_instance.save()
+        if reduce_from_stock(saved_order_instance):
             return Response({"response": "Successfully verified"}, status=status.HTTP_200_OK)

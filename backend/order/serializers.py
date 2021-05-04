@@ -6,9 +6,16 @@ from .models import Order, ProductOrderList
 
 class PlaceOrderSerializer(serializers.Serializer):
 
+    PAYMENT_CHOICES = (
+        ('paypal', 'Paypal'),
+        ('razorpay', 'Razorpay'),
+        ('custom', 'Custom')
+    )
+
     address = serializers.CharField(required=True)
     phone = serializers.CharField(required=True)
-    payment_method = serializers.CharField(required=True)
+    payment_method = serializers.ChoiceField(
+        required=True, choices=PAYMENT_CHOICES)
     product_list = serializers.ListField(
         child=serializers.JSONField(), required=True)
 

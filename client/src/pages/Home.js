@@ -1,6 +1,5 @@
 import React from "react";
 import SelectProducts from "../components/SelectProducts";
-import Subscription from "../components/Subscription";
 import Accessible from "../layouts/Accessible";
 import Carousel from "react-elastic-carousel";
 import companyLogo from "../static/infoFiles/companyLogo";

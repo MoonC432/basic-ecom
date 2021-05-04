@@ -39,15 +39,21 @@
   outline: none;
 }
 
-.actions .cart {
+.actions .cart,
+.actions .disabledCart {
   flex: 1;
   display: flex;
   align-items: center;
   border: 2px solid rgb(115, 115, 245);
   justify-content: space-between;
   margin: 0 10px;
+  color: black;
   white-space: nowrap;
   flex-wrap: nowrap;
+}
+.actions .disabledCart {
+  border: 2px solid gray;
+  color: gray;
 }
 .actions .cart:hover button,
 .actions .cart:hover span {
@@ -55,17 +61,20 @@
   color: rgb(255, 255, 255);
 }
 .actions .cart button,
-.actions .cart span {
+.actions .cart span,
+.actions .disabledCart button,
+.actions .disabledCart span {
   height: 34px;
   line-height: 34px;
   border: 0;
   flex: 0;
-  color: black;
   cursor: pointer;
   transition: all 0.2s ease;
   padding: 0 5px;
 }
-.actions .cart button {
+
+.actions .cart button,
+.actions .disabledCart button {
   background-color: transparent;
   text-align: center;
   flex: 1;

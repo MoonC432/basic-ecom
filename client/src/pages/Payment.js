@@ -68,6 +68,17 @@ function Payment(props) {
                 getTotal={getTotal}
               />
             ) : null}
+            <Link to="/orders">
+              <button className="primary_btn">Track your Order</button>
+            </Link>
+          </div>
+          <div className="Information">
+            To make payment for the Order: <br />
+            Pay with Either Esewa or Online Bank Transfer clearly stating [
+            order Id ]. <br />
+            Bank Name : (Bank Name)br
+            <br />
+            Bank Details : xxxx-xxxx-xxxx (Account Holder Name )
           </div>
         </div>
       </Authentication>
