@@ -301,7 +301,7 @@ function Home() {
         </div>
         <div className="copyrightFooter">
           <p>
-            @copyright 2021 All Rights Reserved.
+            ©copyright 2021 All Rights Reserved.
             <Link>Privacy | Policy</Link>
           </p>
 
