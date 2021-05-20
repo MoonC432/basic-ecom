@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../static/css/Navbar.css";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import SearchIcon from "@material-ui/icons/Search";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -8,7 +8,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "../axios";
-import { NavHashLink } from "react-router-hash-link";
+import { HashLink, NavHashLink } from "react-router-hash-link";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -190,17 +190,12 @@ function Navbar() {
         </div>
       </div>
 
-      <span
-        onClick={() => {
-          history.push("/checkout");
-        }}
-        className="material-icons cart"
-      >
+      <HashLink to="/checkout" className="material-icons cart">
         <span className="cart_length">
           {orderList.length !== 0 ? orderList.length : null}
         </span>
         <ShoppingCartIcon />
-      </span>
+      </HashLink>
     </nav>
   );
 }

@@ -124,6 +124,7 @@
   min-width: 100px;
   font-size: calc(1vw + 10px);
 }
+
 .home .about .googleMap {
   width: 100%;
   height: 450px;

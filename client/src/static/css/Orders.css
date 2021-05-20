@@ -35,6 +35,12 @@
   flex-flow: column;
   border: 1px solid rgb(219, 219, 219);
   background-color: rgb(241, 241, 241);
+  transition: all 0.2s;
+}
+.orders__card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  border: 1px solid rgb(138, 138, 138);
 }
 .orders__card .order-id {
   text-align: center;

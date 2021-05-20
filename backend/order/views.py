@@ -34,22 +34,22 @@ class PlaceOrder(generics.CreateAPIView):
         return Response({"response": serializer.data}, status=status.HTTP_200_OK)
 
 
-# class GetOrderDetails(generics.GenericAPIView):
+class GetOrderDetails(generics.GenericAPIView):
 
-#     permission_classes = (IsAuthenticated,)
-#     authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
 
-#     def get(self, request, *args, **kwargs):
-#         data = []
-#         oid = kwargs['oid']
-#         product_list = ProductOrderList.objects.filter(order_details=oid)
+    def get(self, request, *args, **kwargs):
+        data = []
+        oid = kwargs['oid']
+        product_list = ProductOrderList.objects.filter(order_details=oid)
 
-#         for product in product_list:
-#             info = {
-#                 "name": product.product.name,
-#                 "model_number": product.product.model_number,
-#                 "quantity": product.quantity,
-#                 "price": product.price
-#             }
-#             data.append(info)
-#         return Response({"response": data}, status=status.HTTP_200_OK)
+        for product in product_list:
+            info = {
+                "name": product.product.name,
+                "model_number": product.product.model_number,
+                "quantity": product.quantity,
+                "price": product.price
+            }
+            data.append(info)
+        return Response({"response": data}, status=status.HTTP_200_OK)

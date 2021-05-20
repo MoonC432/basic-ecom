@@ -174,16 +174,16 @@ function Home() {
                 Civil Bank.
               </p>
               <iframe
+                title="googleMap"
                 className="googleMap"
-                title="GoogleMap"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.4659287689897!2d85.30971631453828!3d27.702897032295514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb18551a6e083d%3A0xf07d0b209154a1ab!2z4KS44KS-4KSIIOCkleCkruCljeCkquCljeCkr-ClgeCkn-CksA!5e0!3m2!1sne!2snp!4v1619700914499!5m2!1sne!2snp"
-                allowFullScreen={true}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.4659287689897!2d85.30971631453828!3d27.702897032295514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb18551a6e083d%3A0xf07d0b209154a1ab!2sSai%20computer!5e0!3m2!1sen!2snp!4v1620364609685!5m2!1sen!2snp"
+                allowfullscreen="true"
                 loading="lazy"
               ></iframe>
             </div>
             <div className="companyLogo">
-              {companyLogo.map((logo) => (
-                <img draggable={false} src={logo} alt="" />
+              {companyLogo.map((logo, i) => (
+                <img key={i} draggable={false} src={logo} alt="" />
               ))}
             </div>
           </div>
@@ -286,8 +286,8 @@ function Home() {
           <div className="navigationalLinks">
             <h3>Navigational Links</h3>
             <div className="section">
-              {navigationalLink.navigational.map((link) => (
-                <HashLink smooth className="navLink" to={link.link}>
+              {navigationalLink.navigational.map((link, i) => (
+                <HashLink key={i} smooth className="navLink" to={link.link}>
                   {link.name}
                 </HashLink>
               ))}

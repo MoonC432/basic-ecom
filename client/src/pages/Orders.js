@@ -9,12 +9,15 @@ import ResponseHandler from "../components/ResponseHandler";
 import CurrencyFormat from "react-currency-format";
 import "../static/css/Orders.css";
 import Pagination from "../components/Pagination";
+import { useHistory } from "react-router-dom";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
@@ -79,7 +82,13 @@ function Orders() {
           </div>
           <div className="orders__content">
             {currentProducts.map((order, i) => (
-              <div key={i} className="orders__card">
+              <div
+                onClick={() => {
+                  history.push(`/order-details/${order.id}`, order);
+                }}
+                key={i}
+                className="orders__card"
+              >
                 <span className="order-id">Order Id: {order.id}</span>
                 <span className="price">
                   Total Amount :{" "}
@@ -104,13 +113,11 @@ function Orders() {
                     Completed: {String(order.completed)}
                   </span>
                 </div>
-                <div className="data-row">
-                  <span className="doe">Placed-at: {order.date_of_entry}</span>
-                  <span className="dod">
-                    {order.date_of_delievery &&
-                      "Delivered-at : " + order.date_of_delievery}
-                  </span>
-                </div>
+                <span className="doe">Placed-on: {order.date_of_entry}</span>
+                <span className="dod">
+                  {order.date_of_delivery &&
+                    "Delivery Date : " + order.date_of_delivery}
+                </span>
               </div>
             ))}
           </div>

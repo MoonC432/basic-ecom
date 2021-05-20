@@ -1,0 +1,48 @@
+.orderDetails {
+  width: 100%;
+  padding: 10px;
+}
+.orderDetails .orderId {
+  text-align: center;
+}
+.orderDetails .status {
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #a7a7a7;
+  padding: 10px;
+}
+.orderDetails .orderDates span {
+  display: block;
+}
+.orderDetails .productList {
+  border: 1px solid rgb(219, 219, 219);
+  background-color: rgb(241, 241, 241);
+  padding: 10px;
+  margin: 20px 0;
+}
+.orderDetails .productList .productRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  border: 1px solid #a7a7a7;
+  padding: 10px;
+  margin: 5px 0;
+  gap: 10px;
+  overflow: hidden;
+}
+.orderDetails .productList .productRow span {
+  white-space: nowrap;
+  font-size: calc(1vw + 14px);
+  flex: 0;
+  margin: 0;
+}
+.orderDetails button {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
