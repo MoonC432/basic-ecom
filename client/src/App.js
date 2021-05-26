@@ -16,6 +16,7 @@ import Payment from "./pages/Payment";
 import Orders from "./pages/Orders";
 import Subscription from "./components/Subscription";
 import OrderDetails from "./pages/OrderDetails";
+import Profile from "./pages/Profile";
 
 function App() {
   // login user if token available
@@ -59,6 +60,7 @@ function App() {
             path="/product/search-results"
             component={SearchResults}
           />
+          <Route exact path="/profile" component={Profile} />
           <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/payment" component={Payment} />
           <Route exact path="/orders" component={Orders} />

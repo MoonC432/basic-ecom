@@ -84,6 +84,7 @@ function ProductInfo() {
           type: "SET_RESPONSE_MESSAGE",
           message: response,
         });
+        event.target.reset();
       })
       .catch((error) => {
         dispatch({

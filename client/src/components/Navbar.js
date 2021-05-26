@@ -163,7 +163,14 @@ function Navbar() {
                 </span>
               </div>
               <ul className="settings-options">
-                <li className="option">Profile</li>
+                <li
+                  onClick={() => {
+                    history.push("/profile");
+                  }}
+                  className="option"
+                >
+                  Profile
+                </li>
                 <li
                   onClick={() => {
                     history.push("/orders");

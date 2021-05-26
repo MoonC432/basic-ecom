@@ -28,6 +28,7 @@ function Login() {
           type: "SET_USER_ACCOUNT_INFO",
           payload: response.data.payload,
         });
+
         window.localStorage.setItem("Token", response.data.token);
         history.push("/");
         dispatch({

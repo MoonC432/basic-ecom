@@ -7,6 +7,7 @@ const links = {
     { link: "/services", name: "Services" },
     { link: "/checkout", name: "Checkout" },
     { link: "/orders", name: "Orders" },
+    { link: "/profile", name: "Profile" },
     { link: "/#contact", name: "Contact" },
   ],
 };

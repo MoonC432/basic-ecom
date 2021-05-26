@@ -41,7 +41,6 @@ function Subscription() {
   if (alreadySubscribed) return null;
   return ReactDom.createPortal(
     <>
-      f
       <div className="overlay" />
       <div className="subscription">
         <div className="header">

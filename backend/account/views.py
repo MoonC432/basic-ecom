@@ -20,9 +20,9 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.contrib.auth import logout
 
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
-from dj_rest_auth.registration.views import SocialLoginView
+from dj_rest_auth.registration.views import SocialAccountListView, SocialLoginView
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
-
+from allauth.socialaccount.models import SocialAccount
 # Create your views here.
 
 
@@ -74,6 +74,25 @@ class EmailVerification(APIView):
 
 class Login(ObtainAuthToken):
 
+    def send_user(self, user):
+        social_user = SocialAccount.objects.filter(user=user)
+        provider = "default"
+        if social_user.exists():
+            provider = social_user[0].provider
+
+        data = {}
+        data['status'] = status.HTTP_200_OK
+        data['response'] = 'Successfully logged In.'
+        data['payload'] = {
+            'provider': provider,
+            'subscribed': user.subscribed,
+            'email': user.email,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'id': user.id
+        }
+        return data
+
     def post(self, request, *args, **kwargs):
 
         serializer = self.serializer_class(
@@ -85,16 +104,7 @@ class Login(ObtainAuthToken):
             user = serializer.validated_data['user']
             token, created = Token.objects.get_or_create(user=user)
 
-            data['status'] = status.HTTP_200_OK
-            data['response'] = 'Successfully logged In.'
-            data['payload'] = {
-                'subscribed': user.subscribed,
-                'email': user.email,
-                'first_name': user.first_name,
-                'last_name': user.last_name,
-                'id': user.id
-
-            }
+            data = self.send_user(user)
             data['token'] = token.key
             return Response(data, status=data['status'])
         else:
@@ -103,16 +113,7 @@ class Login(ObtainAuthToken):
     def get(self, request, *args, **kwargs):
         try:
             user = request.user
-            data = {}
-            data['status'] = status.HTTP_200_OK
-            data['response'] = 'Successfully logged In.'
-            data['payload'] = {
-                'subscribed': user.subscribed,
-                'email': user.email,
-                'first_name': user.first_name,
-                'last_name': user.last_name,
-                'id': user.id
-            }
+            data = self.send_user(user)
             return Response(data, status=data['status'])
         except:
             return Response({"error": "Could not login."}, status=status.HTTP_401_UNAUTHORIZED)
@@ -224,7 +225,6 @@ class DeleteUser(generics.DestroyAPIView):
     def delete(self, request, *args, **kwargs):
         try:
             user = UserAccount.objects.get(email=request.user.email)
-            print(user.email)
             user.delete()
             return Response({'response': "User account deleted successfully."}, status=status.HTTP_200_OK)
         except Exception:

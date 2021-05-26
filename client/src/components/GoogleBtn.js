@@ -4,8 +4,7 @@ import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
-const CLIENT_ID =
-  "157713233538-hr1r3v9kqj4o30cr9kp6f7e05fmvlbnb.apps.googleusercontent.com";
+const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 function GoogleBtn({ buttonText }) {
   const dispatch = useDispatch();
@@ -13,26 +12,34 @@ function GoogleBtn({ buttonText }) {
 
   const login = (googleResponse) => {
     if (googleResponse.accessToken) {
-      const payloadData = {
-        email: googleResponse.profileObj.email,
-        first_name: googleResponse.profileObj.name,
-        last_name: googleResponse.profileObj.familyName,
-      };
+      // user info @ googleResponse.profileObj
       axios
         .post("/account/google/", {
           access_token: googleResponse.accessToken,
         })
         .then((response) => {
-          dispatch({
-            type: "SET_USER_ACCOUNT_INFO",
-            payload: payloadData,
-          });
-          window.localStorage.setItem("Token", response.data.key);
-          history.push("/");
-          dispatch({
-            type: "SET_SUBSCRIBE",
-            open: true,
-          });
+          axios
+            .get("/account/login/", {
+              headers: {
+                Authorization: `Token ${response.data.key}`,
+              },
+            })
+            .then((callbackResponse) => {
+              dispatch({
+                type: "SET_USER_ACCOUNT_INFO",
+                payload: callbackResponse.data.payload,
+              });
+              window.localStorage.setItem("Token", response.data.key);
+              history.push("/");
+
+              dispatch({
+                type: "SET_SUBSCRIBE",
+                open: true,
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         })
         .catch((error) => {
           dispatch({ type: "SET_RESPONSE_MESSAGE", message: error.response });

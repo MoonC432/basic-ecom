@@ -1,0 +1,40 @@
+.profile h3 {
+  text-align: center;
+}
+
+.profile .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  max-width: fit-content;
+  padding: 3vw;
+  font-size: calc(1vw + 14px);
+}
+.profile table,
+.profile tr,
+.profile td {
+  border: 1px solid #707070;
+  padding: 0 10px;
+  font-size: calc(1vw + 10px);
+}
+.profile .password {
+  margin-top: 20px;
+  align-self: center;
+}
+.profile form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.profile form input {
+  margin: 10px 0;
+  font-size: 20px;
+  height: 5vh;
+  padding: 10px;
+}
+.profile .delete {
+  align-self: flex-end;
+  margin-top: 50px;
+}
