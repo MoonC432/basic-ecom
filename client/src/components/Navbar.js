@@ -93,8 +93,8 @@ function Navbar() {
               Latest
             </NavHashLink>
 
-            <NavHashLink smooth className="link" to="/services">
-              Services
+            <NavHashLink smooth className="link" to="/#contact">
+              Contact
             </NavHashLink>
           </div>
           <div className="category">

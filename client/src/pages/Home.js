@@ -178,7 +178,7 @@ function Home() {
                 title="googleMap"
                 className="googleMap"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.4659287689897!2d85.30971631453828!3d27.702897032295514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb18551a6e083d%3A0xf07d0b209154a1ab!2sSai%20computer!5e0!3m2!1sen!2snp!4v1620364609685!5m2!1sen!2snp"
-                allowfullscreen="true"
+                allowFullScreen={true}
                 loading="lazy"
               ></iframe>
             </div>
@@ -303,7 +303,7 @@ function Home() {
         <div className="copyrightFooter">
           <p>
             ©copyright 2021 All Rights Reserved.
-            <Link>Privacy | Policy</Link>
+            <Link to="/">Privacy | Policy</Link>
           </p>
 
           <p>

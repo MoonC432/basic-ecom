@@ -13,7 +13,9 @@
   justify-content: space-between;
   border: 1px solid #a7a7a7;
   padding: 10px;
+  white-space: nowrap;
 }
+
 .orderDetails .orderDates span {
   display: block;
 }

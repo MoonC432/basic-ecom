@@ -35,6 +35,28 @@ function Profile() {
         });
     }
   };
+  const handleUnsub = () => {
+    if (!window.confirm("Do you want to unsubscribe from the newsletter ? "))
+      return null;
+    axios
+      .delete("/account/subscription/", {
+        headers: {
+          Authorization: `Token ${window.localStorage.getItem("Token")}`,
+        },
+      })
+      .then((response) => {
+        dispatch({
+          type: "SET_RESPONSE_MESSAGE",
+          message: response,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: "SET_RESPONSE_MESSAGE",
+          message: error.response,
+        });
+      });
+  };
   if (!user) return null;
 
   return (
@@ -44,7 +66,6 @@ function Profile() {
           <h3>Profile Information</h3>
           <ResponseHandler />
           <div className="content">
-            <p className="provider">Account Provider : {user.provider}</p> */}
             <table>
               <tbody>
                 <tr>
@@ -61,7 +82,15 @@ function Profile() {
                 </tr>
                 <tr>
                   <td>Subscribed to newsletter</td>
-                  <td>{capitalize(String(user.subscribed))}</td>
+                  <td className="subs">
+                    {capitalize(String(user.subscribed))}{" "}
+                    <button
+                      onClick={handleUnsub}
+                      className="unsub secondary_btn"
+                    >
+                      Unsubscribe
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>Account provider</td>

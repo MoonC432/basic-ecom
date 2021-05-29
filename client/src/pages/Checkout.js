@@ -189,16 +189,22 @@ function Checkout() {
               <h4>Checkout Details</h4>
               <div className="details">
                 <p>
-                  Sub-total : <span>Rs. 00000</span>
+                  Sub-total :{" "}
+                  <span>
+                    <CurrencyFormat
+                      value={getTotal()}
+                      thousandSeparator={true}
+                      prefix="Rs. "
+                      displayType="text"
+                    />
+                  </span>
                 </p>
                 <p>
                   Shipping : <span>Rs. 00000</span>
                 </p>
+
                 <p>
-                  Tax : <span>Rs. 00000</span>
-                </p>
-                <p>
-                  Total :{" "}
+                  Total (Tax inclusive) :{" "}
                   <span>
                     <CurrencyFormat
                       value={getTotal()}

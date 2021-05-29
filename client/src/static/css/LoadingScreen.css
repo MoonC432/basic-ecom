@@ -12,6 +12,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(143, 143, 143, 0.7);
+  opacity: 0.6;
+  background-color: #000;
   z-index: 100;
 }

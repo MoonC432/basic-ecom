@@ -23,8 +23,6 @@ function OrderDetails(props) {
         },
       })
       .then((response) => {
-        console.log(response);
-
         setProductList(response.data.response);
       })
       .catch((error) => {

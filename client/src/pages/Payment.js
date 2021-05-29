@@ -76,7 +76,7 @@ function Payment(props) {
             To make payment for the Order: <br />
             Pay with Either Esewa or Online Bank Transfer clearly stating [
             order Id ]. <br />
-            Bank Name : (Bank Name)br
+            Bank Name : (Bank Name)
             <br />
             Bank Details : xxxx-xxxx-xxxx (Account Holder Name )
           </div>
