@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import datetime
 from pathlib import Path
-from decouple import config
+# from decouple import config
+import os
+import secrets
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+
+SECRET_KEY = "RANDOM_KEY"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -120,9 +123,9 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = True
 
 
-CORS_ORIGIN_WHITELIST = [
-    config('CLIENT_URL')
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000/'
+# ]
 # CSRF_COOKIE_SECURE = False
 ROOT_URLCONF = 'backend.urls'
 
@@ -210,7 +213,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (Path.joinpath(BASE_DIR, 'static'),)
+# STATICFILES_DIRS = (Path.joinpath(BASE_DIR, 'static'),)
+STATIC_ROOT = Path.joinpath(BASE_DIR,'static') # To load all static (admin) files in base folder, run collectstatic
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
 
@@ -218,5 +222,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = config('COMPANY_EMAIL_ADDRESS')
-EMAIL_HOST_PASSWORD = config('COMPANY_EMAIL_PASSWORD')
+EMAIL_HOST_USER = os.environ.get('COMPANY_EMAIL_ADDRESS')
+EMAIL_HOST_PASSWORD = os.environ.get('COMPANY_EMAIL_PASSWORD')

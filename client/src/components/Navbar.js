@@ -71,7 +71,7 @@ function Navbar() {
         }}
         className="nav-brand"
       >
-        <span>Brand Name</span>
+        <span>Cool Plays</span>
       </div>
       <div className="menu">
         <span

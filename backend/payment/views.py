@@ -1,4 +1,5 @@
-from decouple import config
+# from decouple import config
+import os
 import json
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
@@ -36,8 +37,8 @@ def reduce_from_stock(saved_order_instance):
 
 paypalrestsdk.configure({
     "mode": "sandbox",  # sandbox or live
-    "client_id": config('PAYPAL_CLIENT_ID'),
-    "client_secret": config('PAYPAL_SECRET_ID')})
+    "client_id": os.environ.get('PAYPAL_CLIENT_ID'),
+    "client_secret": os.environ.get('PAYPAL_SECRET_ID')})
 
 
 class PaypalExecute(generics.GenericAPIView):
@@ -79,7 +80,7 @@ class RazorpayVerification(generics.GenericAPIView):
         # generating and comparing the payment signature
 
         client = razorpay.Client(
-            auth=(config("RAZORPAY_KEY_ID"), config("RAZORPAY_SECRET_ID")))
+            auth=(os.environ.get("RAZORPAY_KEY_ID"), os.environ.get("RAZORPAY_SECRET_ID")))
 
         params_dict = {
             'razorpay_order_id': saved_order_instance.generated_id,

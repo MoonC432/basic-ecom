@@ -2,10 +2,11 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from order.models import Order
 import razorpay
-from decouple import config
+# from decouple import config
+import os
 
 client = razorpay.Client(
-    auth=(config("RAZORPAY_KEY_ID"), config("RAZORPAY_SECRET_ID")))
+    auth=(os.environ.get("RAZORPAY_KEY_ID"), os.environ.get("RAZORPAY_SECRET_ID")))
 
 
 @receiver(post_save, sender=Order)

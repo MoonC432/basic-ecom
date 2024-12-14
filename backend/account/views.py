@@ -1,7 +1,8 @@
 from rest_framework.views import APIView
 from .models import UserAccount
 from .utils import Util
-from decouple import config
+# from decouple import config
+import os
 from django.http import HttpResponseRedirect
 
 
@@ -34,6 +35,7 @@ class Register(generics.GenericAPIView):
         data = {}
         if serializer.is_valid():
             account = serializer.save()
+            
             Token.objects.create(user=account)
             # send an email verification
             SendEmailVerification().post(request=request)
@@ -53,7 +55,7 @@ class SendEmailVerification(APIView):
         user = UserAccount.objects.get(email=email)
         token = Token.objects.get(user=user).key
         email_body = '''Hello, \nClick the link Below to activete your account. \n{}/account/verify-email/{}/'''.format(
-            config("SERVER_URL"), token)
+            os.environ.get("SERVER_URL"), token)
         email_data = {
             'email_body': email_body,
             'to_email': email,
@@ -69,7 +71,7 @@ class EmailVerification(APIView):
         user = Token.objects.get(key=token).user
         user.is_active = True
         user.save()
-        return HttpResponseRedirect("{}/login".format(config("CLIENT_URL")))
+        return HttpResponseRedirect("{}/login".format(os.environ.get("CLIENT_URL")))
 
 
 class Login(ObtainAuthToken):
@@ -103,6 +105,7 @@ class Login(ObtainAuthToken):
         if serializer.is_valid(raise_exception=True):
             user = serializer.validated_data['user']
             token, created = Token.objects.get_or_create(user=user)
+            print(token, created)
 
             data = self.send_user(user)
             data['token'] = token.key
@@ -185,7 +188,7 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
             token = PasswordResetTokenGenerator().make_token(user)
 
             absurl = "{}/password-reset-complete/{}/{}".format(
-                config("CLIENT_URL"), uidb64, token)
+                os.environ.get("CLIENT_URL"), uidb64, token)
 
             email_body = "Hello, \n Please use the Link below to reset your password. \n {}".format(
                 absurl)
@@ -251,7 +254,7 @@ class SubscriptionView(generics.GenericAPIView):
 class GoogleLogin(SocialLoginView):
     authentication_classes = []  # disable authentication
     adapter_class = GoogleOAuth2Adapter
-    callback_url = config('CLIENT_URL')
+    callback_url = os.environ.get('CLIENT_URL')
     client_class = OAuth2Client
 
 

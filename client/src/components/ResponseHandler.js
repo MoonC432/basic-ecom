@@ -5,11 +5,11 @@ function ResponseHandler() {
   const response = useSelector((state) => state.responseHandler.response);
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log(response)
     setTimeout(() => {
       dispatch({ type: "SET_RESPONSE_MESSAGE", message: null });
     }, 5000);
   }, [dispatch, response]);
-
   const renderContentResponse = () => {
     if (response && response !== null) {
       if (response.status === 200) {
